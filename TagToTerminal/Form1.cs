@@ -19,7 +19,7 @@ namespace TagToTerminal
         Dictionary<string, List<string>> myDict;
         string[] files;
         string ss;
-        Excel.Range range;
+        
 
         public Form1()
         {
@@ -66,7 +66,7 @@ namespace TagToTerminal
                     foreach (Excel.Worksheet ws in wb.Worksheets)
                     {
                         int lastRow = ws.Cells.Find("*", System.Reflection.Missing.Value, System.Reflection.Missing.Value, System.Reflection.Missing.Value, Excel.XlSearchOrder.xlByRows, Excel.XlSearchDirection.xlPrevious, false, System.Reflection.Missing.Value, System.Reflection.Missing.Value).Row;
-                        listBox1.Items.Add(ws.Name + ": " + lastRow);
+                        listBox1.Items.Add(ws.Name + ": ");
                         for (int i = 2; i <= lastRow; i++)
                         {
                             if (ws.Cells[i, 3].Value2 != null)
@@ -76,9 +76,10 @@ namespace TagToTerminal
                                 {
                                     if (ss[3].Equals('-') && ss[6].Equals('-'))
                                     {
-                                        if(myDict.TryGetValue(ss, out templist))
+                                        if(!myDict.TryGetValue(ss, out templist))
                                         {
-                                            listBox1.Items.Add("    Match: " + ss + " to " + templist[0] + templist[1]);
+                                            listBox1.Items.Add("    No Match: " + ss);
+                                            
                                             //Hello
                                         }
                                     }
@@ -108,10 +109,14 @@ namespace TagToTerminal
 
             for(int i = 1 ; i <= lastRow ; i++)
             {
-                mylist = new List<string>();
-                mylist.Add(ws.Cells[i,2].Value2.ToString());
-                mylist.Add(ws.Cells[i,3].Value2.ToString());
-                myDict.Add(ws.Cells[i,1].Value2.ToString(), mylist);
+                Console.WriteLine(ws.Cells[i, 1].Value2.ToString());
+                if (ws.Cells[i, 1].Value2.ToString()[3].Equals('-') && ws.Cells[i, 1].Value2.ToString()[6].Equals('-'))
+                {
+                    mylist = new List<string>();
+                    mylist.Add(ws.Cells[i,2].Value2.ToString());
+                    mylist.Add(ws.Cells[i,3].Value2.ToString());
+                    myDict.Add(ws.Cells[i,1].Value2.ToString(), mylist);
+                }
             }
             wb.Close();
             button2.Visible = true;
