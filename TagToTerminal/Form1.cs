@@ -50,6 +50,7 @@ namespace TagToTerminal
                 if(s.Contains('~'))
                 {
                     Console.WriteLine(s[0]);
+                    //
                 }
 
                 else
