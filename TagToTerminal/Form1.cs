@@ -19,6 +19,7 @@ namespace TagToTerminal
         Dictionary<string, List<string>> myDict;
         string[] files;
         string ss;
+        int tag_count;
         
 
         public Form1()
@@ -70,18 +71,23 @@ namespace TagToTerminal
                         listBox1.Items.Add(ws.Name + ": ");
                         for (int i = 2; i <= lastRow; i++)
                         {
-                            if (ws.Cells[i, 3].Value2 != null)
+                            if (ws.Cells[i, 1].Value2 != null)
                             {
-                                ss = ws.Cells[i, 3].Value2.ToString();
+                                ss = ws.Cells[i, 1].Value2.ToString();
                                 try
                                 {
-                                    if (ss[3].Equals('-') && ss[6].Equals('-'))
+                                    if (ss[3].Equals('-'))
                                     {
                                         if(!myDict.TryGetValue(ss, out templist))
                                         {
                                             listBox1.Items.Add("    No Match: " + ss);
                                             
                                             //Hello
+                                        }
+                                        else
+                                        {
+                                            progressBar1.PerformStep();
+                                            textBox1.Text = progressBar1.Value.ToString();
                                         }
                                     }
                                 }
@@ -111,7 +117,7 @@ namespace TagToTerminal
             for(int i = 1 ; i <= lastRow ; i++)
             {
                 Console.WriteLine(ws.Cells[i, 1].Value2.ToString());
-                if (ws.Cells[i, 1].Value2.ToString()[3].Equals('-') && ws.Cells[i, 1].Value2.ToString()[6].Equals('-'))
+                if (ws.Cells[i, 1].Value2.ToString()[3].Equals('-') )
                 {
                     mylist = new List<string>();
                     mylist.Add(ws.Cells[i,2].Value2.ToString());
@@ -119,8 +125,26 @@ namespace TagToTerminal
                     myDict.Add(ws.Cells[i,1].Value2.ToString(), mylist);
                 }
             }
+            tag_count = myDict.Count;
+            progressBar1.Maximum = tag_count;
+
             wb.Close();
             button2.Visible = true;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            progressBar1.PerformStep();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
