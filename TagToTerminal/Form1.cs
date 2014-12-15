@@ -43,7 +43,7 @@ namespace TagToTerminal
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //xlApp.Visible = true
+            //xlApp.Visible = true;
             List<string> templist;
             listBox1.Items.Clear();
             foreach (string s in files) 
@@ -86,8 +86,19 @@ namespace TagToTerminal
                                         }
                                         else
                                         {
+                                            ss = templist[1];
+                                            ss = templist[0].Substring(0, 7);
+                                            ss = templist[0].Substring(8, 2);
+                                            ss = templist[0].Substring(0, 7);
+                                            ss = templist[0].Substring(8, 2);
+
+                                            ws.Cells[i,10].Value2 = templist[1];
+                                            ws.Cells[i,11].Value2 = templist[0].Substring(0, 7);
+                                            ws.Cells[i,12].Value2 = templist[0].Substring(8, 2);
+                                            ws.Cells[i, 15].Value2 = templist[0].Substring(0, 7);
+                                            ws.Cells[i, 16].Value2 = templist[0].Substring(8, 2);
                                             progressBar1.PerformStep();
-                                            textBox1.Text = progressBar1.Value.ToString();
+                                            textBox1.Text = progressBar1.Value.ToString() + " of " + tag_count + " matches found";
                                         }
                                     }
                                 }
@@ -98,7 +109,7 @@ namespace TagToTerminal
                             }
                         }
                     }
-                    wb.Close();
+                    wb.Close(SaveChanges: true);
                 }
             }
         }
