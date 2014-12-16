@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Collections;
 
 namespace TagToTerminal
 {
@@ -105,6 +106,7 @@ namespace TagToTerminal
                                 catch(Exception ex)
                                 {
                                     Console.WriteLine(ex.Message.ToString());
+                                    //MessageBox.Show(ex.Message.ToString());
                                 }
                             }
                         }
@@ -127,13 +129,21 @@ namespace TagToTerminal
 
             for(int i = 1 ; i <= lastRow ; i++)
             {
-                Console.WriteLine(ws.Cells[i, 1].Value2.ToString());
+                //Console.WriteLine(ws.Cells[i, 1].Value2.ToString());
                 if (ws.Cells[i, 1].Value2.ToString()[3].Equals('-') )
                 {
                     mylist = new List<string>();
-                    mylist.Add(ws.Cells[i,2].Value2.ToString());
-                    mylist.Add(ws.Cells[i,3].Value2.ToString());
-                    myDict.Add(ws.Cells[i,1].Value2.ToString(), mylist);
+
+                    try
+                    {
+                        mylist.Add(ws.Cells[i, 2].Value2.ToString());
+                        mylist.Add(ws.Cells[i, 3].Value2.ToString());
+                        myDict.Add(ws.Cells[i, 1].Value2.ToString(), mylist);
+                    }
+                    catch(ArgumentException)
+                    {
+                        listBox1.Items.Add(ws.Cells[i, 1].Value2.ToString() + " " + ws.Cells[i, 2].Value2.ToString() + " " + ws.Cells[i, 3].Value2.ToString());
+                    }
                 }
             }
             tag_count = myDict.Count;
@@ -148,14 +158,5 @@ namespace TagToTerminal
             progressBar1.PerformStep();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

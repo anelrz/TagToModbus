@@ -34,9 +34,9 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(516, 20);
+            this.textBox1.Size = new System.Drawing.Size(560, 20);
             this.textBox1.TabIndex = 0;
             // 
             // button1
@@ -55,7 +55,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(525, 3);
+            this.button1.Location = new System.Drawing.Point(569, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 24);
             this.button1.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             this.Start_Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Start_Button.Location = new System.Drawing.Point(525, 33);
+            this.Start_Button.Location = new System.Drawing.Point(569, 33);
             this.Start_Button.Name = "Start_Button";
             this.Start_Button.Size = new System.Drawing.Size(94, 23);
             this.Start_Button.TabIndex = 4;
@@ -84,7 +84,7 @@
             this.listBox1.Location = new System.Drawing.Point(3, 33);
             this.listBox1.Name = "listBox1";
             this.tableLayoutPanel1.SetRowSpan(this.listBox1, 2);
-            this.listBox1.Size = new System.Drawing.Size(516, 246);
+            this.listBox1.Size = new System.Drawing.Size(560, 251);
             this.listBox1.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -108,13 +108,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(666, 317);
             this.tableLayoutPanel1.TabIndex = 7;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(525, 63);
+            this.button2.Location = new System.Drawing.Point(569, 63);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 23);
             this.button2.TabIndex = 7;
@@ -122,6 +121,16 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(3, 290);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(560, 24);
+            this.progressBar1.TabIndex = 10;
             // 
             // folderBrowserDialog1
             // 
@@ -133,16 +142,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.InitialDirectory = "\\";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(348, 291);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.TabIndex = 10;
             // 
             // Form1
             // 
