@@ -152,11 +152,5 @@ namespace TagToTerminal
             wb.Close();
             button2.Visible = true;
         }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            progressBar1.PerformStep();
-        }
-
     }
 }
