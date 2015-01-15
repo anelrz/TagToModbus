@@ -134,7 +134,7 @@
             // 
             // folderBrowserDialog1
             // 
-            this.folderBrowserDialog1.SelectedPath = "C:\\Users\\Kobylarz\\Documents\\Brüel Kjær Vibro\\Nghi Son\\transfer\\temp\\my";
+            this.folderBrowserDialog1.SelectedPath = "D:\\Users\\skobylar\\Documents\\Nghi Son\\maybedeleted";
             this.folderBrowserDialog1.ShowNewFolderButton = false;
             // 
             // openFileDialog1
@@ -151,6 +151,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Tag To Sensor";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

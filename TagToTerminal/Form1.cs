@@ -31,10 +31,13 @@ namespace TagToTerminal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            files = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*.xlsx", SearchOption.AllDirectories);
-            listBox1.Items.AddRange(files);
-
+            try
+            {
+                folderBrowserDialog1.ShowDialog();
+                files = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*.xlsx", SearchOption.AllDirectories);
+                listBox1.Items.AddRange(files);
+            }
+            catch (DirectoryNotFoundException) { }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -87,17 +90,8 @@ namespace TagToTerminal
                                         }
                                         else
                                         {
-                                            ss = templist[1];
-                                            ss = templist[0].Substring(0, 7);
-                                            ss = templist[0].Substring(8, 2);
-                                            ss = templist[0].Substring(0, 7);
-                                            ss = templist[0].Substring(8, 2);
 
-                                            ws.Cells[i,10].Value2 = templist[1];
-                                            ws.Cells[i,11].Value2 = templist[0].Substring(0, 7);
-                                            ws.Cells[i,12].Value2 = templist[0].Substring(8, 2);
-                                            ws.Cells[i, 15].Value2 = templist[0].Substring(0, 7);
-                                            ws.Cells[i, 16].Value2 = templist[0].Substring(8, 2);
+                                            ws.Cells[i, 2].Value2 = templist[0];
                                             progressBar1.PerformStep();
                                             textBox1.Text = progressBar1.Value.ToString() + " of " + tag_count + " matches found";
                                         }
@@ -126,19 +120,22 @@ namespace TagToTerminal
             ws = wb.Worksheets[1];
             
             int lastRow = ws.Cells.Find("*", System.Reflection.Missing.Value, System.Reflection.Missing.Value, System.Reflection.Missing.Value, Excel.XlSearchOrder.xlByRows, Excel.XlSearchDirection.xlPrevious, false, System.Reflection.Missing.Value, System.Reflection.Missing.Value).Row;
-
+            mylist = new List<string>();
             for(int i = 1 ; i <= lastRow ; i++)
             {
                 //Console.WriteLine(ws.Cells[i, 1].Value2.ToString());
-                if (ws.Cells[i, 1].Value2.ToString()[3].Equals('-') )
+                //if (ws.Cells[i, 8].Value2.ToString()[3].Equals('-') )
                 {
                     mylist = new List<string>();
-
                     try
                     {
-                        mylist.Add(ws.Cells[i, 2].Value2.ToString());
-                        mylist.Add(ws.Cells[i, 3].Value2.ToString());
-                        myDict.Add(ws.Cells[i, 1].Value2.ToString(), mylist);
+                        if (!String.Equals(ws.Cells[i, 12].Value2.ToString(), "N/A", StringComparison.Ordinal))
+                        {
+                            mylist.Add(ws.Cells[i, 12].Value2.ToString());
+                            //mylist.Add(ws.Cells[i, 3].Value2.ToString());
+                            myDict.Add(ws.Cells[i, 8].Value2.ToString(), mylist);
+                            
+                        }
                     }
                     catch(ArgumentException)
                     {
@@ -151,6 +148,11 @@ namespace TagToTerminal
 
             wb.Close();
             button2.Visible = true;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
