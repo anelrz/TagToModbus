@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagToTerminal", "TagToTerminal\TagToTerminal.csproj", "{F01E3AE1-DBE9-4034-AEE6-B4D42327513E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagToSensor", "TagToTerminal\TagToSensor.csproj", "{F01E3AE1-DBE9-4034-AEE6-B4D42327513E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
