@@ -12,7 +12,7 @@ using System.IO;
 using System.Collections;
 
 namespace TagToTerminal
-{
+{//its not linked
     public partial class Form1 : Form
     {
         Excel.Application xlApp;
