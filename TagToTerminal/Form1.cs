@@ -139,7 +139,11 @@ namespace TagToTerminal
                     }
                     catch(ArgumentException)
                     {
-                        listBox1.Items.Add(ws.Cells[i, 1].Value2.ToString() + " " + ws.Cells[i, 2].Value2.ToString() + " " + ws.Cells[i, 3].Value2.ToString());
+                        try
+                        {
+                            listBox1.Items.Add(ws.Cells[i, 1].Value2.ToString() + " " + ws.Cells[i, 2].Value2.ToString() + " " + ws.Cells[i, 3].Value2.ToString());
+                        }
+                        catch { }
                     }
                 }
             }
